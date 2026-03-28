@@ -4,284 +4,261 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>WM EAT SU — Auth</title>
-    <link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
 </head>
 <body>
 
-<!-- ════ LEFT ════ -->
-<div class="left">
-  <div class="left-img"></div>
-  <div class="left-bg"></div>
-  <div class="left-noise"></div>
-  <div class="left-content">
-
-    <div class="brand">
-      <div class="brand-icon">
-        <i class="fa-solid fa-utensils"></i>
+<div class="auth-container">
+  
+  <div class="left">
+    <div class="left-img"></div>
+    <div class="left-bg"></div>
+    <div class="left-noise"></div>
+    <div class="left-content">
+      
+      <div class="brand">
+        <div class="brand-icon">
+          <i class="fa-solid fa-utensils"></i>
+        </div>
+        <span class="brand-name">WM EAT SU</span>
       </div>
-      <span class="brand-name">WM EAT SU</span>
-    </div>
 
+    </div>
+  </div>
+
+  <div class="right" id="rightPanel">
 
    
-
-  </div>
-</div>
-
-<!-- ════ RIGHT ════ -->
-<div class="right" id="rightPanel">
-
-  <a href="#" class="back-link" onclick="handleBack(event)">
-    <i class="fa-solid fa-chevron-left"></i>
-    Back to Home
-  </a>
-
-  <!-- ══════════════════
-       VIEW: SIGN IN
-  ══════════════════ -->
-  <div class="card view active" id="viewSignIn">
-    <div class="card-title">Welcome Back</div>
-    <div class="card-sub">Sign in to your WM EAT SU account</div>
-
-    <div class="form-group" style="margin-bottom:18px">
-      <label>Email Address <span class="req">*</span></label>
-      <div class="input-wrap">
-        <i class="fa-solid fa-envelope fa-icon"></i>
-        <input type="email" class="no-eye" placeholder="you@example.com" id="signInEmail"/>
-      </div>
-    </div>
-
-    <div class="form-group" style="margin-bottom:10px">
-      <label>Password <span class="req">*</span></label>
-      <div class="input-wrap">
-        <i class="fa-solid fa-lock fa-icon"></i>
-        <input type="password" placeholder="Enter your password" id="signInPwd"/>
-        <button class="eye-btn" onclick="togglePwd('signInPwd')" type="button">
-          <i class="fa-regular fa-eye" id="signInPwdIcon"></i>
-        </button>
-      </div>
-    </div>
-
-    <div class="forgot-link"><a href="#"><i class="fa-solid fa-key" style="margin-right:5px"></i>Forgot password?</a></div>
-
-    <button class="btn-primary" style="margin-top:14px" onclick="alert('Signed in! (demo)')">
-      <i class="fa-solid fa-right-to-bracket"></i> Sign In
-    </button>
-
-    <div class="divider">or</div>
-
-    <button class="btn-outline-red" onclick="showRegister()">
-      <i class="fa-solid fa-user-plus"></i> Create an Account
-    </button>
-
-    <div class="sign-up-link" style="margin-top:16px">
-      Don't have an account? <a href="#" onclick="showRegister();return false">Sign Up</a>
-    </div>
-  </div>
-
-  <!-- ══════════════════
-       VIEW: REGISTER
-  ══════════════════ -->
-  <div class="card view" id="viewRegister">
-
-    <!-- Stepper -->
-    <div class="steps" id="stepper">
-      <div class="step-item">
-        <div class="step-circle active" id="sc1">1</div>
-        <span class="step-label">Step 1</span>
-      </div>
-      <div class="step-line" id="sl1"></div>
-      <div class="step-item">
-        <div class="step-circle" id="sc2">2</div>
-        <span class="step-label">Step 2</span>
-      </div>
-      <div class="step-line" id="sl2"></div>
-      <div class="step-item">
-        <div class="step-circle" id="sc3">3</div>
-        <span class="step-label">Step 3</span>
-      </div>
-    </div>
-
-    <!-- ── STEP 1 : Create Account ── -->
-    <div class="step-section active" id="step1">
-      <div class="card-title">Create Your Account</div>
-      <div class="card-sub">Enter your basic information</div>
-
-      <div class="form-row">
-        <div class="form-group">
-          <label>First Name <span class="req">*</span></label>
-          <div class="input-wrap">
-            <i class="fa-solid fa-user fa-icon"></i>
-            <input type="text" class="no-eye" placeholder="John" id="firstName"/>
-          </div>
-        </div>
-        <div class="form-group mi">
-          <label>M.I.</label>
-          <div class="input-wrap">
-            <input type="text" class="no-icon no-eye" placeholder="A" maxlength="2" id="mi"/>
-          </div>
-        </div>
-        <div class="form-group">
-          <label>Last Name <span class="req">*</span></label>
-          <div class="input-wrap">
-            <input type="text" class="no-icon no-eye" placeholder="Doe" id="lastName"/>
-          </div>
-        </div>
-      </div>
+    <div class="card view active" id="viewSignIn">
+      <div class="card-title">Welcome Back</div>
+      <div class="card-sub">Sign in to your WM EAT SU account</div>
 
       <div class="form-group" style="margin-bottom:18px">
         <label>Email Address <span class="req">*</span></label>
         <div class="input-wrap">
           <i class="fa-solid fa-envelope fa-icon"></i>
-          <input type="email" class="no-eye" placeholder="you@example.com" id="email"/>
+          <input type="email" class="no-eye" placeholder="you@example.com" id="signInEmail"/>
         </div>
       </div>
 
-      <div class="form-group" style="margin-bottom:18px">
+      <div class="form-group" style="margin-bottom:10px">
         <label>Password <span class="req">*</span></label>
         <div class="input-wrap">
           <i class="fa-solid fa-lock fa-icon"></i>
-          <input type="password" placeholder="Min. 6 characters" id="password"/>
-          <button class="eye-btn" onclick="togglePwd('password')" type="button">
-            <i class="fa-regular fa-eye" id="passwordIcon"></i>
+          <input type="password" placeholder="Enter your password" id="signInPwd"/>
+          <button class="eye-btn" onclick="togglePwd('signInPwd')" type="button">
+            <i class="fa-regular fa-eye" id="signInPwdIcon"></i>
           </button>
         </div>
       </div>
 
-      <div class="form-group" style="margin-bottom:24px">
-        <label>Confirm Password <span class="req">*</span></label>
-        <div class="input-wrap">
-          <i class="fa-solid fa-lock fa-icon"></i>
-          <input type="password" placeholder="Re-enter password" id="confirmPassword"/>
-          <button class="eye-btn" onclick="togglePwd('confirmPassword')" type="button">
-            <i class="fa-regular fa-eye" id="confirmPasswordIcon"></i>
-          </button>
-        </div>
-      </div>
+      <div class="forgot-link"><a href="#"><i class="fa-solid fa-key" style="margin-right:5px"></i>Forgot password?</a></div>
 
-      <button class="btn-primary" onclick="goStep(2)">
-        <i class="fa-solid fa-arrow-right"></i> Next Step
+      <button class="btn-primary" style="margin-top:14px" onclick="alert('Signed in! (demo)')">
+        <i class="fa-solid fa-right-to-bracket"></i> Sign In
       </button>
-      <div class="sign-in-link">
-        Already have an account? <a href="#" onclick="showSignIn();return false">Sign In</a>
+
+      <div class="divider">or</div>
+
+      <button class="btn-outline-red" onclick="showRegister()">
+        <i class="fa-solid fa-user-plus"></i> Create an Account
+      </button>
+
+      <div class="sign-up-link" style="margin-top:16px">
+        Don't have an account? <a href="#" onclick="showRegister();return false">Sign Up</a>
       </div>
     </div>
 
-    <!-- ── STEP 2 : Student Verification ── -->
-    <div class="step-section" id="step2">
-      <div class="card-title">Student Verification</div>
-      <div class="card-sub">Upload your Certificate of Enrollment and ID</div>
+    <div class="card view" id="viewRegister">
 
-      <!-- Upload 1 -->
-      <div style="margin-bottom:22px">
-        <div class="upload-label">
-          <span class="upload-num">1</span>
-          Certificate of Enrollment <span style="color:var(--red)">*</span>
+      <div class="steps" id="stepper">
+        <div class="step-item">
+          <div class="step-circle active" id="sc1">1</div>
+          <span class="step-label">Step 1</span>
         </div>
-        <div class="upload-zone" onclick="document.getElementById('coeFile').click()">
-          <div class="upload-icon-wrap">
-            <i class="fa-solid fa-cloud-arrow-up"></i>
-          </div>
-          <p>Drop your file here or click to browse</p>
-          <small>Accepted formats: JPG, PNG, PDF (Max 5MB)</small><br>
-          <button class="choose-btn" type="button" onclick="event.stopPropagation();document.getElementById('coeFile').click()">
-            <i class="fa-solid fa-folder-open"></i> Choose File
-          </button>
-          <input type="file" id="coeFile" accept=".jpg,.jpeg,.png,.pdf" style="display:none"
-            onchange="showFileName(this,'coeLabel')"/>
+        <div class="step-line" id="sl1"></div>
+        <div class="step-item">
+          <div class="step-circle" id="sc2">2</div>
+          <span class="step-label">Step 2</span>
         </div>
-        <div id="coeLabel" style="font-size:.78rem;color:var(--red);margin-top:6px;display:none"></div>
+        <div class="step-line" id="sl2"></div>
+        <div class="step-item">
+          <div class="step-circle" id="sc3">3</div>
+          <span class="step-label">Step 3</span>
+        </div>
       </div>
 
-      <!-- Upload 2 -->
-      <div style="margin-bottom:28px">
-        <div class="upload-label">
-          <span class="upload-num">2</span>
-          Student ID / Valid ID <span style="color:var(--red)">*</span>
-        </div>
-        <div class="upload-zone" onclick="document.getElementById('idFile').click()">
-          <div class="upload-icon-wrap">
-            <i class="fa-solid fa-cloud-arrow-up"></i>
-          </div>
-          <p>Drop your file here or click to browse</p>
-          <small>Accepted formats: JPG, PNG, PDF (Max 5MB)</small><br>
-          <button class="choose-btn" type="button" onclick="event.stopPropagation();document.getElementById('idFile').click()">
-            <i class="fa-solid fa-folder-open"></i> Choose File
-          </button>
-          <input type="file" id="idFile" accept=".jpg,.jpeg,.png,.pdf" style="display:none"
-            onchange="showFileName(this,'idLabel')"/>
-        </div>
-        <div id="idLabel" style="font-size:.78rem;color:var(--red);margin-top:6px;display:none"></div>
-      </div>
+      <div class="step-section active" id="step1">
+        <div class="card-title">Create Your Account</div>
+        <div class="card-sub">Enter your basic information</div>
 
-      <div class="btn-row">
-        <button class="btn-secondary" onclick="goStep(1)">
-          <i class="fa-solid fa-arrow-left"></i> Back
-        </button>
-        <button class="btn-primary" style="margin-top:0" onclick="goStep(3)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name <span class="req">*</span></label>
+            <div class="input-wrap">
+              <i class="fa-solid fa-user fa-icon"></i>
+              <input type="text" class="no-eye" placeholder="John" id="firstName"/>
+            </div>
+          </div>
+          <div class="form-group mi">
+            <label>M.I.</label>
+            <div class="input-wrap">
+              <input type="text" class="no-icon no-eye" placeholder="A" maxlength="2" id="mi"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Last Name <span class="req">*</span></label>
+            <div class="input-wrap">
+              <input type="text" class="no-icon no-eye" placeholder="Doe" id="lastName"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom:18px">
+          <label>Email Address <span class="req">*</span></label>
+          <div class="input-wrap">
+            <i class="fa-solid fa-envelope fa-icon"></i>
+            <input type="email" class="no-eye" placeholder="you@example.com" id="email"/>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom:18px">
+          <label>Password <span class="req">*</span></label>
+          <div class="input-wrap">
+            <i class="fa-solid fa-lock fa-icon"></i>
+            <input type="password" placeholder="Min. 6 characters" id="password"/>
+            <button class="eye-btn" onclick="togglePwd('password')" type="button">
+              <i class="fa-regular fa-eye" id="passwordIcon"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom:24px">
+          <label>Confirm Password <span class="req">*</span></label>
+          <div class="input-wrap">
+            <i class="fa-solid fa-lock fa-icon"></i>
+            <input type="password" placeholder="Re-enter password" id="confirmPassword"/>
+            <button class="eye-btn" onclick="togglePwd('confirmPassword')" type="button">
+              <i class="fa-regular fa-eye" id="confirmPasswordIcon"></i>
+            </button>
+          </div>
+        </div>
+
+        <button class="btn-primary" onclick="goStep(2)">
           <i class="fa-solid fa-arrow-right"></i> Next Step
         </button>
-      </div>
-    </div>
-
-    <!-- ── STEP 3 : Email Verification (last) ── -->
-    <div class="step-section" id="step3">
-      <div class="otp-icon-ring">
-        <i class="fa-solid fa-envelope-open-text"></i>
-      </div>
-      <div class="card-title">Email Verification</div>
-      <p class="otp-email">
-        We've sent a 6-digit code to<br>
-        <strong id="otpEmailDisplay">your@email.com</strong>
-      </p>
-
-      <div class="otp-row" id="otpRow">
-        <input class="otp-input" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]"/>
-        <input class="otp-input" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]"/>
-        <input class="otp-input" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]"/>
-        <input class="otp-input" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]"/>
-        <input class="otp-input" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]"/>
-        <input class="otp-input" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]"/>
-      </div>
-
-      <div class="resend-link">
-        <a href="#" onclick="return false">
-          <i class="fa-solid fa-rotate-right" style="margin-right:4px"></i>Didn't receive the code? Resend
-        </a>
-      </div>
-
-      <button class="btn-primary" style="margin-top:20px" onclick="goSuccess()">
-        <i class="fa-solid fa-shield-check"></i> Verify Code
-      </button>
-
-      <div class="btn-row" style="margin-top:12px">
-        <button class="btn-secondary" onclick="goStep(2)" style="flex:1">
-          <i class="fa-solid fa-arrow-left"></i> Back
-        </button>
-      </div>
-    </div>
-
-    <!-- ── SUCCESS ── -->
-    <div class="step-section" id="stepSuccess">
-      <div class="success-wrap">
-        <div class="success-icon">
-          <i class="fa-solid fa-circle-check"></i>
+        <div class="sign-in-link">
+          Already have an account? <a href="#" onclick="showSignIn();return false">Sign In</a>
         </div>
-        <h2>Application Submitted!</h2>
-        <p>Your account is under review. You'll receive a confirmation email once verified. This usually takes 1–2 business days.</p>
-        <button class="btn-primary" onclick="showSignIn()">
-          <i class="fa-solid fa-right-to-bracket"></i> Back to Sign In
-        </button>
       </div>
-    </div>
 
-  </div><!-- /card register -->
-</div><!-- /right -->
+      <div class="step-section" id="step2">
+        <div class="card-title">Student Verification</div>
+        <div class="card-sub">Upload your Certificate of Enrollment and ID</div>
 
-<script>
+        <div style="margin-bottom:22px">
+          <div class="upload-label">
+            <span class="upload-num">1</span>
+            Certificate of Enrollment <span style="color:var(--red)">*</span>
+          </div>
+          <div class="upload-zone" onclick="document.getElementById('coeFile').click()">
+            <div class="upload-icon-wrap">
+              <i class="fa-solid fa-cloud-arrow-up"></i>
+            </div>
+            <p>Drop your file here or click to browse</p>
+            <small>Accepted formats: JPG, PNG, PDF (Max 5MB)</small><br>
+            <button class="choose-btn" type="button" onclick="event.stopPropagation();document.getElementById('coeFile').click()">
+              <i class="fa-solid fa-folder-open"></i> Choose File
+            </button>
+            <input type="file" id="coeFile" accept=".jpg,.jpeg,.png,.pdf" style="display:none"
+              onchange="showFileName(this,'coeLabel')"/>
+          </div>
+          <div id="coeLabel" style="font-size:.78rem;color:var(--red);margin-top:6px;display:none"></div>
+        </div>
+
+        <div style="margin-bottom:28px">
+          <div class="upload-label">
+            <span class="upload-num">2</span>
+            Student ID / Valid ID <span style="color:var(--red)">*</span>
+          </div>
+          <div class="upload-zone" onclick="document.getElementById('idFile').click()">
+            <div class="upload-icon-wrap">
+              <i class="fa-solid fa-cloud-arrow-up"></i>
+            </div>
+            <p>Drop your file here or click to browse</p>
+            <small>Accepted formats: JPG, PNG, PDF (Max 5MB)</small><br>
+            <button class="choose-btn" type="button" onclick="event.stopPropagation();document.getElementById('idFile').click()">
+              <i class="fa-solid fa-folder-open"></i> Choose File
+            </button>
+            <input type="file" id="idFile" accept=".jpg,.jpeg,.png,.pdf" style="display:none"
+              onchange="showFileName(this,'idLabel')"/>
+          </div>
+          <div id="idLabel" style="font-size:.78rem;color:var(--red);margin-top:6px;display:none"></div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn-secondary" onclick="goStep(1)">
+            <i class="fa-solid fa-arrow-left"></i> Back
+          </button>
+          <button class="btn-primary" style="margin-top:0" onclick="goStep(3)">
+            <i class="fa-solid fa-arrow-right"></i> Next Step
+          </button>
+        </div>
+      </div>
+
+      <div class="step-section" id="step3">
+        <div class="otp-icon-ring">
+          <i class="fa-solid fa-envelope-open-text"></i>
+        </div>
+        <div class="card-title">Email Verification</div>
+        <p class="otp-email">
+          We've sent a 6-digit code to<br>
+          <strong id="otpEmailDisplay">your@email.com</strong>
+        </p>
+
+        <div class="otp-row" id="otpRow">
+          <input class="otp-input" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]"/>
+          <input class="otp-input" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]"/>
+          <input class="otp-input" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]"/>
+          <input class="otp-input" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]"/>
+          <input class="otp-input" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]"/>
+          <input class="otp-input" type="text" maxlength="1" inputmode="numeric" pattern="[0-9]"/>
+        </div>
+
+        <div class="resend-link">
+          <a href="#" onclick="return false">
+            <i class="fa-solid fa-rotate-right" style="margin-right:4px"></i>Didn't receive the code? Resend
+          </a>
+        </div>
+
+        <button class="btn-primary" style="margin-top:20px" onclick="goSuccess()">
+          <i class="fa-solid fa-shield-check"></i> Verify Code
+        </button>
+
+        <div class="btn-row" style="margin-top:12px">
+          <button class="btn-secondary" onclick="goStep(2)" style="flex:1">
+            <i class="fa-solid fa-arrow-left"></i> Back
+          </button>
+        </div>
+      </div>
+
+      <div class="step-section" id="stepSuccess">
+        <div class="success-wrap">
+          <div class="success-icon">
+            <i class="fa-solid fa-circle-check"></i>
+          </div>
+          <h2>Application Submitted!</h2>
+          <p>Your account is under review. You'll receive a confirmation email once verified. This usually takes 1–2 business days.</p>
+          <button class="btn-primary" onclick="showSignIn()">
+            <i class="fa-solid fa-right-to-bracket"></i> Back to Sign In
+          </button>
+        </div>
+      </div>
+
+    </div></div></div><script>
 const CHECK_HTML = `<i class="fa-solid fa-check" style="font-size:.75rem"></i>`;
 
 /* ── View switching ── */
