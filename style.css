@@ -16,7 +16,7 @@
 }
 
 body {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   min-height: 100vh;
   display: flex;
   background: #f8f8f8;
@@ -29,7 +29,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 60px 52px;
   overflow: hidden;
   background: #1a0a0a;
@@ -41,7 +41,7 @@ body {
 }
 .left-img {
   position: absolute; inset: 0;
-  background: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=900&q=80') center/cover no-repeat;
+  background: url('wmsu.jpg') center/cover no-repeat;
   z-index: 0; opacity: .55;
 }
 .left-noise {
@@ -53,18 +53,19 @@ body {
 
 /* Brand */
 .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 52px; }
+
 .brand-icon {
-  width: 44px; height: 44px;
+  width: 60px; height: 60px;
   background: rgba(255,255,255,0.15);
   backdrop-filter: blur(10px);
   border-radius: 12px;
   display: grid; place-items: center;
   border: 1px solid rgba(255,255,255,0.2);
 }
-.brand-icon i { font-size: 1.1rem; color: #fff; }
+.brand-icon i { font-size: 1.2rem; color: #fff; }
 .brand-name {
   font-family: 'Syne', sans-serif;
-  font-weight: 800; font-size: 1.05rem;
+  font-weight: 800; font-size: 2.0rem;
   color: #fff; letter-spacing: .04em;
 }
 
@@ -80,11 +81,7 @@ body {
   max-width: 340px; margin-bottom: 44px;
 }
 
-.features { display: flex; flex-direction: column; gap: 16px; }
-.feat {
-  display: flex; align-items: center; gap: 14px;
-  color: rgba(255,255,255,.9); font-size: .93rem; font-weight: 500;
-}
+
 .feat-icon {
   width: 32px; height: 32px; flex-shrink: 0;
   background: rgba(255,255,255,.12);
@@ -97,14 +94,20 @@ body {
 /* ════ RIGHT PANEL ════ */
 .right {
   width: 55%;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: flex-start;
+  display: flex;
+  align-items: center;      /* vertical center */
+  justify-content: center;  /* horizontal center */
   padding: 40px 32px;
   background: #f8f8f8;
-  overflow-y: auto; min-height: 100vh;
+  min-height: 100vh;
+  position: relative;
 }
 
+
 .back-link {
+  position: absolute;
+  top: 30px;
+  left: 32px;
   align-self: flex-start;
   display: flex; align-items: center; gap: 8px;
   color: var(--text-muted); font-size: .87rem;
