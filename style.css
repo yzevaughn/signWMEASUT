@@ -20,10 +20,10 @@ body {
   font-family: 'Inter', sans-serif;
   min-height: 100vh;
   display: flex;
-  align-items: center;      /* Centers vertically */
-  justify-content: center;  /* Centers horizontally */
-  background: #e5e7eb;      /* Slightly darker background so the container pops */
-  padding: 24px;            /* Breathing room on smaller screens */
+  align-items: center; 
+  justify-content: center; 
+  background: #e5e7eb; 
+  padding: 24px; 
 }
 
 /* ════ NEW MAIN CONTAINER ════ */
@@ -31,11 +31,11 @@ body {
   display: flex;
   width: 100%;
   max-width: 1100px;
-  min-height: 750px;
+  height: 750px; /* Fixed height so it doesn't jump */
   background: #f8f8f8;
   border-radius: 24px;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  overflow: hidden;         /* Keeps the left panel background inside the rounded corners */
+  overflow: hidden; 
 }
 
 /* ════ LEFT PANEL ════ */
@@ -102,15 +102,6 @@ body {
   max-width: 340px; margin-bottom: 44px;
 }
 
-.feat-icon {
-  width: 32px; height: 32px; flex-shrink: 0;
-  background: rgba(255,255,255,.12);
-  border-radius: 50%;
-  display: grid; place-items: center;
-  border: 1px solid rgba(255,255,255,.2);
-}
-.feat-icon i { font-size: .8rem; color: #fff; }
-
 /* Horizontal scroll */
 .food-scroll {
   display: flex;
@@ -157,7 +148,6 @@ body {
   position: relative;
 }
 
-
 /* ── Card ── */
 .card {
   background: #fff;
@@ -165,6 +155,17 @@ body {
   box-shadow: var(--shadow);
   padding: 40px 44px 44px;
   width: 100%; max-width: 500px;
+  height: 620px;     /* Locked height */
+  overflow-y: auto;  /* Allows scrolling if content is too tall */
+}
+
+/* Card Scrollbar styling */
+.card::-webkit-scrollbar {
+  width: 6px;
+}
+.card::-webkit-scrollbar-thumb {
+  background: var(--gray-border);
+  border-radius: 10px;
 }
 
 /* ── Stepper ── */
@@ -186,7 +187,9 @@ body {
 .step-circle.done { background: var(--red); border-color: var(--red); color: #fff; }
 .step-circle i { font-size: .75rem; }
 .step-label { font-size: .72rem; color: var(--gray); font-weight: 500; letter-spacing: .03em; }
-.step-line  { height: 2px; width: 80px; background: var(--gray-border); margin-bottom: 22px; transition: background .3s; }
+
+/* Adjusted for 4 steps */
+.step-line  { height: 2px; width: 50px; background: var(--gray-border); margin-bottom: 22px; transition: background .3s; }
 .step-line.done { background: var(--red); }
 
 /* ── Card header ── */
@@ -266,7 +269,7 @@ input::placeholder { color: #b0b7c3; }
 .upload-zone {
   border: 2px dashed var(--gray-border);
   border-radius: 12px; 
-  padding: 16px 20px; /* Reduced padding */
+  padding: 80px 20px; /* Reduced for smaller size */
   text-align: center; 
   background: #fafafa;
   cursor: pointer;
@@ -276,21 +279,21 @@ input::placeholder { color: #b0b7c3; }
 .upload-zone:hover { border-color: var(--red); background: var(--red-bg); }
 
 .upload-icon-wrap {
-  width: 40px; /* Smaller icon circle */
-  height: 40px; /* Smaller icon circle */
+  width: 40px; 
+  height: 40px;
   background: var(--red-bg); border-radius: 50%;
   display: grid; place-items: center; 
-  margin: 0 auto 8px; /* Reduced bottom margin */
+  margin: 0 auto 8px; 
 }
-.upload-icon-wrap i { font-size: 1.1rem; color: var(--red); } /* Slightly smaller icon */
+.upload-icon-wrap i { font-size: 1.1rem; color: var(--red); }
 
 .upload-zone p  { font-size: .85rem; color: var(--text-muted); margin-bottom: 4px; }
 .upload-zone small { font-size: .75rem; color: var(--gray); }
 
 .choose-btn {
   display: inline-flex; align-items: center; gap: 7px;
-  margin-top: 8px; /* Reduced top margin */
-  padding: 6px 14px; /* Reduced button padding */
+  margin-top: 8px;
+  padding: 6px 14px;
   border: 1.5px solid var(--red); border-radius: 8px;
   background: none; color: var(--red);
   font-family: 'Inter', sans-serif; font-size: .82rem; font-weight: 600;
@@ -298,6 +301,7 @@ input::placeholder { color: #b0b7c3; }
 }
 .choose-btn:hover { background: var(--red); color: #fff; }
 .choose-btn i { font-size: .8rem; }
+
 /* ── Buttons ── */
 .btn-primary {
   width: 100%; padding: 14px;
@@ -341,6 +345,15 @@ input::placeholder { color: #b0b7c3; }
 
 .btn-row { display: flex; gap: 12px; margin-top: 6px; }
 
+/* Push buttons to bottom of card on steps */
+#step1 > .btn-primary,
+#step2 > .btn-row,
+#step3 > .btn-row,
+#step4 > .btn-primary,
+#step4 > .btn-row {
+  margin-top: auto !important; 
+}
+
 /* ── Misc ── */
 .sign-in-link, .sign-up-link {
   text-align: center; margin-top: 20px;
@@ -376,10 +389,20 @@ input::placeholder { color: #b0b7c3; }
 
 /* ── Views & Step sections ── */
 .view { display: none; }
-.view.active { display: block; animation: fadeUp .3s ease; }
+.view.active { 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  animation: fadeUp .3s ease; 
+}
 
 .step-section { display: none; }
-.step-section.active { display: block; animation: fadeUp .35s ease; }
+.step-section.active { 
+  display: flex; 
+  flex-direction: column; 
+  flex: 1; 
+  animation: fadeUp .35s ease; 
+}
 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(12px); }
@@ -403,7 +426,8 @@ input::placeholder { color: #b0b7c3; }
 @media (max-width: 900px) {
   .auth-container { 
     flex-direction: column; 
-    min-height: auto; 
+    height: auto; 
+    min-height: 100vh;
   }
   .left { 
     width: 100%; 
@@ -419,15 +443,12 @@ input::placeholder { color: #b0b7c3; }
   .card { 
     padding: 30px 24px 36px; 
   }
-  .step-line { 
-    width: 50px; 
-  }
 }
 
 @media (max-width: 480px) {
   .form-row { flex-direction: column; gap: 18px; }
   .form-group.mi { flex: 1; }
   .otp-input { width: 42px; height: 50px; font-size: 1.2rem; }
-  .step-line { width: 32px; }
+  .step-line { width: 24px; } /* Shrink lines further on small screens */
   .card { padding: 24px 18px 30px; }
 }
